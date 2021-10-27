@@ -30,7 +30,6 @@ const App = () => {
       const account = accounts[0]
       console.log('Found an authorized account:', account)
       setCurrentAccount(account)
-      setupEventListener()
       setIsLoading(false)
     } else {
       console.log('No authorized account found')
@@ -51,7 +50,6 @@ const App = () => {
       console.log('Connected', accounts[0])
       setCurrentAccount(accounts[0])
       setIsLoading(false)
-      setupEventListener()
       let chainId = await ethereum.request({ method: 'eth_chainId' })
       console.log('Connected to chain ' + chainId)
 
@@ -120,6 +118,7 @@ const App = () => {
         console.log(
           `Mined, see transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`,
         )
+        setupEventListener()
         setIsLoading(false)
       } else {
         setIsLoading(false)
